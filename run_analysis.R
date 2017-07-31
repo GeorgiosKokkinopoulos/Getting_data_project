@@ -62,8 +62,8 @@ train<-train[,c(565,1:564)]
 merged_set<-rbind(train,test)
 
 #I only need to keep the variables that refer to mean or std.I am going to extract their column numbers in the original set. Function grep does this work.
-mean_variables<-grep("mean",features$feature_name)
 
+mean_variables<-grep("mean",features$feature_name)
 std_variables<-grep("std",features$feature_name)
 all_variables<-c(mean_variables,std_variables)
 all_variables<-sort(all_variables)
