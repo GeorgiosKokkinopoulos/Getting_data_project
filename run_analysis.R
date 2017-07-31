@@ -83,9 +83,11 @@ merged_set<-merged_set[,c(1:4,all_variables)]
 merged_set_melt<-melt(merged_set,id=1:4,measure.vars=5:83)
 
 #Finally, I am grouping the data by activity name and by volunteer number and I am calculating the average of each feature.
+
 final_set<-dcast(merged_set_melt,activity_name+volunteer_num~variable,mean)
 
 #I am moving back to my original folder for this project where I am going to write my output.
+
 setwd("../")
 setwd("../")
 write.table(final_set,"output.txt",row.names=F)
