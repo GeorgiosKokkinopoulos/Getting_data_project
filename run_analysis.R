@@ -63,9 +63,10 @@ merged_set<-rbind(train,test)
 
 #I only need to keep the variables that refer to mean or std.I am going to extract their column numbers in the original set. Function grep does this work.
 
-mean_variables<-grep("mean",features$feature_name)
+mean_variables1<-grep("mean",features$feature_name)
+mean_variables2<-grep("Mean",features$feature_name)
 std_variables<-grep("std",features$feature_name)
-all_variables<-c(mean_variables,std_variables)
+all_variables<-c(mean_variables1,mean_variables2,std_variables)
 all_variables<-sort(all_variables)
 
 #In my dataset, I have added 4 columns at the beginning just before the 561 feature variables. Therefore, to identify the correct positions I need to add 4 to the
@@ -80,13 +81,13 @@ merged_set<-merged_set[,c(1:4,all_variables)]
 #I will only keep the first 4 variables as they stand, as all subsequent ones are those that I am going to find the average for, therefore
 #they will be put in one column (after the column with their names).Function melt (reshape2 package) does this job.
 
-merged_set_melt<-melt(merged_set,id=1:4,measure.vars=5:83)
+merged_set_melt<-melt(merged_set,id=1:4,measure.vars=5:90)
 
 #Finally, I am grouping the data by activity name and by volunteer number and I am calculating the average of each feature.
 #I am also adding the prefix "ave" to the names of the columns that represent the features
 
 final_set<-dcast(merged_set_melt,activity_name+volunteer_num~variable,mean)
-colnames(final_set)[3:81]<-paste("ave",colnames(final_set[,3:81]),sep="_")
+colnames(final_set)[3:88]<-paste("ave",colnames(final_set[,3:88]),sep="_")
 
 #I am moving back to my original folder for this project where I am going to write my output.
 
