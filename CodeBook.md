@@ -56,4 +56,7 @@ tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
 
-In the final set created by the script 
+In the final set created by the script there are two variables at the beginning named "activity_name" and "volunteer_num" the refer to the kind of activity the each person
+was undergoing at the time of measurement (walking,walking_upstairs,walking_downstairs,sitting,standing,laying) and the number of the person ranging from 1 to 30. The following
+79 variables start with "ave_" to state that what is measured in this dataset is the average of the relevant variable from the original datasets.
+
